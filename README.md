@@ -54,12 +54,14 @@ robot demo_suite.robot
 ├───resources
 |   └───keywords
 |   |   ├───common_keywords.resource
-|	 └───pageObjects
+|	└───pageObjects
 |   |   ├───demo_pageObject.resource
-|	 └───pages
-|	 	  ├───demo_page.resource
+|	└───pages
+|	|	├───demo_page.resource
 ├───tests
         ├───demo_suite.robot
-```
 
+
+
+```
 
