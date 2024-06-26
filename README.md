@@ -18,12 +18,13 @@ Clone Repository
 Install the dependencies:
 
 ```bash
-0. python --version
-1. python -m venv .venv
-.venv\Scripts\activate.bat
-2. pip install robotframework
-3. pip install robotframework-seleniumlibrary
-4. pip install robotframework-requests
+1. "Robot Framework Language Server" extention on visual code
+2. python --version
+3. python -m venv .venv
+   .venv\Scripts\activate.bat
+4. pip install robotframework
+5. pip install robotframework-seleniumlibrary
+6. pip install robotframework-requests
 ```
 ### Running Tests
 
