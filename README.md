@@ -53,13 +53,13 @@ robot demo_suite.robot
 |   ├───config.resource
 ├───resources
 |   └───keywords
-|   |   ├───common_keywords.resource
-|	└───pageObjects
-|   |   ├───demo_pageObject.resource
-|	└───pages
-|	|	├───demo_page.resource
+|   |   └───common_keywords.resource
+|	 └───pageObjects
+|   |   └───demo_pageObject.resource
+|	 └───pages
+|       └───demo_page.resource
 ├───tests
-        ├───demo_suite.robot
+        └───demo_suite.robot
 
 
 
