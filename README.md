@@ -62,6 +62,7 @@ robot demo_suite.robot
         └───demo_suite.robot
 
 
+![image](https://github.com/ngtruc2421/Ckc_robot_automation/assets/146813971/d5c8f571-606e-40b2-8181-327b32ea987f)
 
 ```
 
