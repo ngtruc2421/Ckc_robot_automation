@@ -55,9 +55,9 @@ robot demo_suite.robot
 |   ├───keywords
 |   |   └───common_keywords.resource
 |	 ├───pageObjects
-|   |   └───demo_pageObject.resource
+|   └───demo_pageObject.resource
 |	 ├───pages
-|       └───demo_page.resource
+|   └───demo_page.resource
 ├───tests
         └───demo_suite.robot
 
