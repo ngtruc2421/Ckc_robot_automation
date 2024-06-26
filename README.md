@@ -8,6 +8,9 @@
 [![VSCode](https://img.shields.io/badge/-Visual%20Studio%20Code-%233178C6?logo=visual-studio-code)](https://code.visualstudio.com/download)
 
 <img width="35" height="35" src="https://img.icons8.com/color/25/python--v1.png" alt="python--v1"/>
+<img width="35" height="35" src="https://github.com/ngtruc2421/Ckc_robot_automation/assets/146813971/ee5f7167-f638-4788-aa1b-4da12fbe3fa1" alt="Robot frameword"/>
+
+
 
 ### Getting Started:
 
@@ -44,25 +47,6 @@ robot demo_suite.robot
     - Provide details test report
 
 ### Folder Structure:
+![image](https://github.com/ngtruc2421/Ckc_robot_automation/assets/146813971/fb46c246-e09e-4348-a89d-253295dc580d)
 
-```
-├───.github
-├───.vscode
-├───.vevn
-├───configurations
-|   ├───config.resource
-├───resources
-|   ├───keywords
-|   |   └───common_keywords.resource
-|	 ├───pageObjects
-|   |   └───demo_pageObject.resource
-|	 ├───pages
-|       └───demo_page.resource
-├───tests
-        └───demo_suite.robot
-
-
-![image](https://github.com/ngtruc2421/Ckc_robot_automation/assets/146813971/d5c8f571-606e-40b2-8181-327b32ea987f)
-
-```
 
