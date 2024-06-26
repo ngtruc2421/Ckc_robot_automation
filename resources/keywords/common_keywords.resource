@@ -1,6 +1,5 @@
 *** Settings ***
 Resource    ../../configurations/config.resource
-Resource    ../pages/paymentInformation_page.resource
 *** Variables ***
 ${PAGE_TITLE_ELE}            css:.page-title
 *** Keywords ***
@@ -53,6 +52,15 @@ Click on button
             Run Keyword And Continue On Failure    Fail    Couldn't click on ${LOCATOR} button 
         END
     
+Select on option
+    [Documentation]    This keyword to click on a button by provided locator
+    [Arguments]    ${LOCATOR}
+        TRY
+            Click on the web element    ${LOCATOR}
+        EXCEPT    
+            Run Keyword And Continue On Failure    Fail    Couldn't click on ${LOCATOR} option
+        END
+    
 Input value for a field
     [Documentation]    This keyword input a value for a field by provided value and locator 
     [Arguments]    ${TEXT}    ${LOCATOR} 
@@ -98,7 +106,7 @@ The page should be opened
 
 Open page
     [Documentation]    This keyword open a webpage
-    [Arguments]    ${PAGENAME}    ${LOCATOR}
+    [Arguments]    ${URL_HOME}    ${PAGENAME}    ${LOCATOR}
     TRY
         Access to url    ${URL_HOME}
         ${PAGENAME_LOWER}=    Evaluate    "${PAGENAME}".lower()
@@ -112,7 +120,7 @@ Open page
 
 Select Option From Dropdown
     [Documentation]    This keyword select a option from the dropdown by provided locator and option
-    [Arguments]    ${DROPDOWN_LOCATOR}    ${OPTION_TEXT}
+    [Arguments]    ${SELECT_OPTION_ELE}    ${DROPDOWN_LOCATOR}    ${OPTION_TEXT}
     TRY
         Select From List By Label    ${DROPDOWN_LOCATOR}    ${OPTION_TEXT}
         ${SELECTED_VALUE}=    Wait and get element text    ${SELECT_OPTION_ELE}
@@ -125,21 +133,39 @@ Select Option From Dropdown
         Run Keyword And Continue On Failure    Fail    Couldn't select the ${OPTION_TEXT} option
     END
 
+Scroll Down in Firefox
+    ${total_height}=    Execute JavaScript    return document.documentElement.scrollHeight
+    ${viewport_height}=    Execute JavaScript    return window.innerHeight
+    ${current_scroll}=    Execute JavaScript    return window.scrollY
+
+    ${scroll_amount}=    Set Variable    700
+    ${target_scroll}=    Evaluate    ${current_scroll} + ${scroll_amount}
+    
+    Run Keyword If    ${target_scroll} > ${total_height} - ${viewport_height}    ${target_scroll}=    Set Variable    ${total_height} - ${viewport_height}
+    
+    Execute JavaScript    window.scrollTo({ top: ${target_scroll}, behavior: 'smooth' })
 Hover Over Elenment
     [Documentation]    This keyword is used to move the mouse to a provided locator
     [Arguments]       ${ELEMENT}    ${COORDINATES}=500
     TRY
-        Scroll Element Into View    ${ELEMENT}
-        Execute JavaScript    window.scrollBy(0, ${COORDINATES})
+        IF    ("${BROWSER}"=="Firefox")
+            Scroll Down in Firefox
+            
+        ELSE
+            Scroll Element Into View    ${ELEMENT}
+            Execute JavaScript    window.scrollBy(0, ${COORDINATES})
+        END
         ${status}=    Run Keyword And Return Status    Element Should Be Visible    ${ELEMENT}
         IF    "${status}"=="False"
             Run Keyword And Continue On Failure    Fail    No look for element
         ELSE
+            Sleep    2s           
             Mouse Over    ${ELEMENT}
         END
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't hover the ${ELEMENT} element
     END
+   
    
 Wait until page contain element
     [Documentation]    This keyword is used to wait and check page contain provided locator
@@ -201,3 +227,13 @@ Clear cookies
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't clear all cookies of browser
     END
+
+The page should be contain
+    [Documentation]    This keyword is used to wait and check page contain provided locator
+    [Arguments]    ${TEXT}
+    TRY
+        Wait Until Page Contains   ${TEXT}
+        Page Should Contain   ${TEXT}
+    EXCEPT    
+        Run Keyword And Continue On Failure    Fail    Couldn't looking for the text
+    END   
