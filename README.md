@@ -52,11 +52,11 @@ robot demo_suite.robot
 ├───configurations
 |   ├───config.resource
 ├───resources
-|   └───keywords
+|   ├───keywords
 |   |   └───common_keywords.resource
-|	 └───pageObjects
+|	 ├───pageObjects
 |   |   └───demo_pageObject.resource
-|	 └───pages
+|	 ├───pages
 |       └───demo_page.resource
 ├───tests
         └───demo_suite.robot
