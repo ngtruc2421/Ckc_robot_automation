@@ -7,7 +7,7 @@
 
 [![VSCode](https://img.shields.io/badge/-Visual%20Studio%20Code-%233178C6?logo=visual-studio-code)](https://code.visualstudio.com/download)
 
-![Python](https://www.python.org/static/img/python-logo.png)
+<img width="35" height="35" src="https://img.icons8.com/color/25/python--v1.png" alt="python--v1"/>
 
 ### Getting Started:
 
@@ -36,7 +36,7 @@ robot demo_suite.robot
 ### Features:
 
     - Web Testing
-    - Robot and Selenium frameword
+    - Robot and Selenium framework
     - Page Object Model
     - Behavior-Driven Development (BDD)
     - Screenshot in report for failed tests
@@ -54,10 +54,10 @@ robot demo_suite.robot
 ├───resources
 |   └───keywords
 |   |   ├───common_keywords.resource
-|	└───pageObjects
+|	 └───pageObjects
 |   |   ├───demo_pageObject.resource
-|	└───pages
-|	|	├───demo_page.resource
+|	 └───pages
+|	 	  ├───demo_page.resource
 ├───tests
         ├───demo_suite.robot
 ```
