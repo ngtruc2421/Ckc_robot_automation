@@ -6,7 +6,8 @@
 
 
 [![VSCode](https://img.shields.io/badge/-Visual%20Studio%20Code-%233178C6?logo=visual-studio-code)](https://code.visualstudio.com/download)
-[![Python](https://www.python.org/static/img/python-logo.png)]
+
+![Python](https://www.python.org/static/img/python-logo.png)
 
 ### Getting Started:
 
