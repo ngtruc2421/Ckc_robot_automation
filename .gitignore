@@ -1,0 +1,16 @@
+.venv/
+
+# Logs
+logs/
+*.log
+
+*.xml
+#Specifig report files
+log.html
+output.xml
+report.html
+
+#ignore images
+*.png
+
+# specìic file 
