@@ -15,7 +15,12 @@ Access to url
 
 Navigate to URL 
     [Arguments]    ${URL}  
-    Go To    ${URL}
+    TRY  
+        Go To    ${URL}
+    EXCEPT    
+        Run Keyword And Continue On Failure    Fail    Couldn't Navigate to URL 
+    END
+
 
 Scroll to 
     [Documentation]    This keyword to scroll the visual to the inputed value
@@ -55,11 +60,11 @@ Click on button
 Select on option
     [Documentation]    This keyword to click on a button by provided locator
     [Arguments]    ${LOCATOR}
-        TRY
-            Click on the web element    ${LOCATOR}
-        EXCEPT    
-            Run Keyword And Continue On Failure    Fail    Couldn't click on ${LOCATOR} option
-        END
+    TRY
+        Click on the web element    ${LOCATOR}
+    EXCEPT    
+        Run Keyword And Continue On Failure    Fail    Couldn't click on ${LOCATOR} option
+    END
     
 Input value for a field
     [Documentation]    This keyword input a value for a field by provided value and locator 
@@ -127,7 +132,6 @@ Select Option From Dropdown
         WHILE    "${SELECTED_VALUE}" != "${OPTION_TEXT}"
             Wait Until Element Contains    ${SELECT_OPTION_ELE}    ${OPTION_TEXT}
         END
-        # ${current_text}=    Wait and get element text       ${DROPDOWN_LOCATOR}
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't select the ${OPTION_TEXT} option
     END
@@ -141,7 +145,7 @@ Scroll Down in Firefox
         ${scroll_amount}=    Set Variable    700
         ${target_scroll}=    Evaluate    ${current_scroll} + ${scroll_amount}
         Run Keyword If    ${target_scroll} > ${total_height} - ${viewport_height}    ${target_scroll}=    Set Variable    ${total_height} - ${viewport_height}
-    Execute JavaScript    window.scrollTo({ top: ${target_scroll}, behavior: 'smooth' })
+        Execute JavaScript    window.scrollTo({ top: ${target_scroll}, behavior: 'smooth' })
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't scroll in the Firefox 
     END
