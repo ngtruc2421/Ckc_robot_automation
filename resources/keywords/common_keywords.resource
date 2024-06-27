@@ -127,23 +127,25 @@ Select Option From Dropdown
         WHILE    "${SELECTED_VALUE}" != "${OPTION_TEXT}"
             Wait Until Element Contains    ${SELECT_OPTION_ELE}    ${OPTION_TEXT}
         END
-
         # ${current_text}=    Wait and get element text       ${DROPDOWN_LOCATOR}
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't select the ${OPTION_TEXT} option
     END
 
 Scroll Down in Firefox
-    ${total_height}=    Execute JavaScript    return document.documentElement.scrollHeight
-    ${viewport_height}=    Execute JavaScript    return window.innerHeight
-    ${current_scroll}=    Execute JavaScript    return window.scrollY
-
-    ${scroll_amount}=    Set Variable    700
-    ${target_scroll}=    Evaluate    ${current_scroll} + ${scroll_amount}
-    
-    Run Keyword If    ${target_scroll} > ${total_height} - ${viewport_height}    ${target_scroll}=    Set Variable    ${total_height} - ${viewport_height}
-    
+    [Documentation]    This keyword scroll down in Firefox
+    TRY
+        ${total_height}=    Execute JavaScript    return document.documentElement.scrollHeight
+        ${viewport_height}=    Execute JavaScript    return window.innerHeight
+        ${current_scroll}=    Execute JavaScript    return window.scrollY
+        ${scroll_amount}=    Set Variable    700
+        ${target_scroll}=    Evaluate    ${current_scroll} + ${scroll_amount}
+        Run Keyword If    ${target_scroll} > ${total_height} - ${viewport_height}    ${target_scroll}=    Set Variable    ${total_height} - ${viewport_height}
     Execute JavaScript    window.scrollTo({ top: ${target_scroll}, behavior: 'smooth' })
+    EXCEPT    
+        Run Keyword And Continue On Failure    Fail    Couldn't scroll in the Firefox 
+    END
+
 Hover Over Elenment
     [Documentation]    This keyword is used to move the mouse to a provided locator
     [Arguments]       ${ELEMENT}    ${COORDINATES}=500
