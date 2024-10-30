@@ -71,7 +71,7 @@ Input value for a field
     [Arguments]    ${TEXT}    ${LOCATOR} 
     TRY
         Wait Until Element Is Visible    ${LOCATOR}      
-        Clear Element Text               ${LOCATOR}
+        # Clear Element Text               ${LOCATOR}
         Input Text    ${LOCATOR}    ${TEXT}
     EXCEPT    
         Run Keyword And Continue On Failure    Fail    Couldn't input value for the input field  
